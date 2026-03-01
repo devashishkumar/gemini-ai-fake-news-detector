@@ -31,7 +31,7 @@ async function detectFakeNewsFromURL(url) {
 
   // 3️⃣ Gemini setup
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
   const prompt = `
   You are a fact-checker.
@@ -64,6 +64,16 @@ async function detectFakeNewsFromURL(url) {
 }
 
 (async () => {
-  const analysis = await detectFakeNewsFromURL("https://example.com/news");
-  console.log(analysis);
+  const url = process.argv[2]; // Get URL from command line argument
+  if (!url) {
+    console.log("Usage: node ai-news-detector.js <news-url>");
+    process.exit(1);
+  }
+
+  try {
+    const result = await detectFakeNewsFromURL(url);
+    console.log("Result:", result);
+  } catch (err) {
+    console.error("Error:", err.message);
+  }
 })();
