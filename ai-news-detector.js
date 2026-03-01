@@ -1,7 +1,7 @@
-require("dotenv").config();
 const axios = require("axios");
 const cheerio = require("cheerio");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
+require("dotenv").config();
 
 /**
  * Detect fake news from a URL using Gemini AI
