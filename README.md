@@ -42,18 +42,31 @@ node ai-news-detector.js <news-url>
 npx ts-node ai-news-detector.ts <news-url>
 ```
 
-Compile TypeScript and run:
+Compile TypeScript into JavaScript in `dist/` and run:
 
 ```bash
-npx tsc ai-news-detector.ts
-node ai-news-detector.js
+npx tsc --project tsconfig.json
+node dist/ai-news-detector.js <news-url>
+```
+
+Or compile a single file explicitly to dist:
+
+```bash
+npx tsc --outDir dist ai-news-detector.ts
+node dist/ai-news-detector.js <news-url>
+```
+
+Use npm scripts:
+
+```bash
+npm run build
+node dist/ai-news-detector.js <news-url>
 ```
 
 OR
 
 ```bash
-npm install -D tsx
-npx tsx ai-news-detector.ts <news-url>
+npm run detect -- <news-url>
 ```
 
 ## Examples

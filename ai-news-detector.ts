@@ -1,9 +1,9 @@
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 dotenv.config();
 
-import axios from 'axios';
-import * as cheerio from 'cheerio';
-import { GoogleGenerativeAI, GenerativeModel } from '@google/generative-ai';
+const axios = require('axios');
+const cheerio = require('cheerio');
+const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 // Type for structured AI response
 interface FakeNewsResult {
@@ -37,7 +37,7 @@ async function detectFakeNewsFromURL(url: string): Promise<FakeNewsResult> {
   if (!apiKey) throw new Error('GEMINI_API_KEY is not set in your environment variables.');
 
   const ai = new GoogleGenerativeAI(apiKey);
-  const model: GenerativeModel = ai.getGenerativeModel({ model: 'gemini-2.5-flash' });
+  const model = ai.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
   const prompt: string = `
 You are a professional fact-checker.

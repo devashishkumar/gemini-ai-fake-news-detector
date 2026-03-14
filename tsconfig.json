@@ -9,7 +9,8 @@
     "skipLibCheck": true,                 // ignore type errors in node_modules
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "rootDir": ".",
     "outDir": "./dist"                     // compiled JS goes here
   },
-  "include": ["*.ts"]                     // your TS files
+  "include": ["**/*.ts"]
 }
